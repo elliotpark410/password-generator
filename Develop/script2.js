@@ -15,6 +15,102 @@ function writePassword() {
 
 
 
+
+  // Create a passwordLength var to determine how many characters to use 
+  var passwordLength = [];
+
+  // Create prompt for password length
+  function passwordLengthPrompt() {
+    var passwordLengthInput = prompt("Please choose how many characters you would like your password to contain");
+
+    if (passwordLengthInput === null) {
+      console.log("user hit cancel in password length prompt");
+    } else if (passwordLengthInput > 128 || passwordLengthInput <= 7) {
+      alert("Password must be between 8 and 128 characters");
+    } else {
+      passwordLength = passwordLengthInput;
+    }
+  }
+  passwordLengthPrompt();
+  console.log("passwordLength: " + passwordLength);
+
+
+
+
+
+
+  // Create an includeCharacters var to determine which functions to use in generate password
+  var includeCharacters = {
+    includeLowercase: false,
+    includeUppercase: false,
+    includeNumeric: false,
+    includeSpecialCharacter: false
+  }
+
+  // Create confirmation for lowercase
+  function lowercaseConfirmation() {
+    var lowercaseConfirmationInput = confirm("Click OK to include lowercase characters");
+
+    if (lowercaseConfirmationInput) {
+      console.log("user hit ok to include lowercase");
+      includeCharacters.includeLowercase = true;
+    } else {
+        console.log("user hit cancel to not include lowercase");
+        includeCharacters.includeLowercase = false;
+    }
+  }
+  lowercaseConfirmation();
+
+
+  // Create confirmation for uppercase
+  function uppercaseConfirmation() {
+    var uppercaseConfirmationInput = confirm("Click OK to include uppercase characters");
+
+    if (uppercaseConfirmationInput) {
+      console.log("user hit ok to include uppercase");
+      includeCharacters.includeUppercase = true;
+    } else {
+        console.log("user hit cancel to not include uppercase");
+        includeCharacters.includeUppercase = false;
+    }
+  }
+  uppercaseConfirmation();
+
+
+  // Create confirmation for numeric
+  function numericConfirmation() {
+    var numericConfirmationInput = confirm("Click OK to include numeric characters");
+
+    if (numericConfirmationInput) {
+      console.log("user hit ok to include numeric characters");
+      includeCharacters.includeNumeric = true;
+    } else {
+        console.log("user hit cancel to not include numeric characters");
+        includeCharacters.includeNumeric = false;
+    }
+  }
+  numericConfirmation();
+
+
+  // Create confirmation for special characters
+  function specialCharacterConfirmation() {
+    var specialCharacterConfirmationInput = confirm("Click OK to include special characters");
+
+    if (specialCharacterConfirmationInput) {
+      console.log("user hit ok to include special characters");
+      includeCharacters.includeSpecialCharacter = true;
+    } else {
+        console.log("user hit cancel to not include special characters");
+        includeCharacters.includeSpecialCharacter = false;
+    }
+  }
+  specialCharacterConfirmation();
+  
+  console.log(includeCharacters);
+
+
+
+
   // Create passwordCharacterKey object. using const because values will never change
   const passwordCharacterKey = {
     lowercaseCharacters: 'abcdefghijklmnopqrstuvwxyz',
@@ -25,6 +121,10 @@ function writePassword() {
   console.log(passwordCharacterKey);
 
   
+
+  // Create a const to group random lowercase, uppercase, numberic, and special to reference for password generator function
+  const randomCharacter = [randomLowercase(), randomUppercase(), randomNumeric(), randomSpecial()];
+
 
   //Create function to generate random lowercase character 
   function randomLowercase() {
@@ -50,11 +150,10 @@ function writePassword() {
   }
   console.log(randomSpecial());
 
-  // Create a const to group random lowercase, uppercase, numberic, and special 
-  const randomCharacter = [randomLowercase(), randomUppercase(), randomNumeric(), randomSpecial()];
 
 
 
+  
 
 
 
