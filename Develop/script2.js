@@ -109,6 +109,15 @@ function writePassword() {
   console.log(includeCharacters);
 
 
+  // Create alert to notify user that they have to choose one character type to include in password
+  if (includeCharacters.includeLowercase === false &&
+      includeCharacters.includeUppercase === false &&
+      includeCharacters.includeNumeric === false &&
+      includeCharacters.includeSpecialCharacter === false) {
+    alert("Please press OK to at least one character type to include in your password");
+  }
+
+
 
 
   // Create passwordCharacterKey object. using const because values will never change
