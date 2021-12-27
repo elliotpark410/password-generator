@@ -1,38 +1,128 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// Create var called passwordCharacterKey with object storing potential password characters
+var passwordCharacterKey = {
+  lowercaseCharacters: 'abcdefghijklmnopqrstuvwxyz',
+  uppercaseCharacters: 'ABCDEFGHIJKLMNOPQRSTUVWXY',
+  numericCharacters: '0123456789',
+  specialCharacters: '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~"'
+}
 
-  passwordText.value = password;
+// Create variables to save results from functions 
+var passwordLength;
+var includeLowercase;
+var includeUppercase;
+var includeNumeric;
+var includeSpecialCharacters;
 
 
 
+// Create function prompt for password length prompt
+function passwordLengthPrompt() {
+  var passwordLengthInput = prompt("Please choose how many characters you would like your password to contain between 8-128 characters");
 
-
-
-
-
-
-  // Create a passwordLength var to determine how many characters to use 
-  var passwordLength = [];
-
-  // Create prompt for password length
-  function passwordLengthPrompt() {
-    var passwordLengthInput = prompt("Please choose how many characters you would like your password to contain");
-
-    if (passwordLengthInput === null) {
-      console.log("user hit cancel in password length prompt");
-    } else if (passwordLengthInput > 128 || passwordLengthInput <= 7) {
-      alert("Password must be between 8 and 128 characters");
-    } else {
-      passwordLength = passwordLengthInput;
-    }
+  if (passwordLengthInput > 128) {
+    alert("Password must be less than 128 characters");
+    passwordLengthPrompt();
+  } else if (passwordLengthInput < 8) {
+    alert("Password must be more than 7 characters");
+    passwordLengthPrompt();
+  } else if (isNaN(passwordLengthInput)) {
+    alert("Password must be a number between 8 and 128 characters");
+    passwordLengthPrompt();
+  } else {
+    passwordLength = passwordLengthInput;
   }
-  passwordLengthPrompt();
-  console.log("passwordLength: " + passwordLength);
+  return passwordLength;
+}
+// passwordLengthPrompt();
+console.log("passwordLength: " + passwordLength);
+
+
+
+// Create confirmation for lowercase
+function lowercaseConfirmation() {
+  var lowercaseConfirmationInput = confirm("Click OK to include lowercase characters");
+
+  if (lowercaseConfirmationInput) {
+    console.log("user hit ok to include lowercase");
+    includeLowercase = true;
+    return includeLowercase;
+
+  } else {
+    console.log("user hit cancel to not include lowercase");
+    includeLowercase = false;
+    return includeLowercase;
+  }
+  return includeLowercase;
+}
+// lowercaseConfirmation();
+
+
+
+// Create confirmation for uppercase
+function uppercaseConfirmation() {
+  var uppercaseConfirmationInput = confirm("Click OK to include uppercase characters");
+
+  if (uppercaseConfirmationInput) {
+    console.log("user hit ok to include uppercase");
+    includeUppercase = true;
+    return includeUppercase;
+
+  } else {
+    console.log("user hit cancel to not include uppercase");
+    includeUppercase = false;
+    return includeUppercase;
+  }
+  return includeUppercase;
+}
+// uppercaseConfirmation();
+
+
+
+// Create confirmation for numeric
+function numericConfirmation() {
+  var numericConfirmationInput = confirm("Click OK to include numeric characters");
+
+  if (numericConfirmationInput) {
+    console.log("user hit ok to include numeric characters");
+    includeNumeric = true;
+    return includeNumeric;
+
+  } else {
+    console.log("user hit cancel to not include numeric characters");
+    includeNumeric = false;
+    return includeNumeric;
+  }
+  return includeNumeric;
+}
+// numericConfirmation();
+
+
+
+// Create confirmation for specialCharacters
+function specialCharactersConfirmation() {
+  var specialCharactersConfirmationInput = confirm("Click OK to include special characters");
+
+  if (specialCharactersConfirmationInput) {
+    console.log("user hit ok to include special characters");
+    includeSpecialCharacters = true;
+    return includeSpecialCharacters;
+
+  } else {
+    console.log("user hit cancel to not include special characters");
+    includeSpecialCharacters = false;
+    return includeSpecialCharacters;
+  }
+  return includeSpecialCharacters;
+}
+// specialCharactersConfirmation();
+
+
+
+
+
 
 
 
@@ -120,14 +210,7 @@ function writePassword() {
 
 
 
-  // Create passwordCharacterKey object. using const because values will never change
-  const passwordCharacterKey = {
-    lowercaseCharacters: 'abcdefghijklmnopqrstuvwxyz',
-    uppercaseCharacters: 'ABCDEFGHIJKLMNOPQRSTUVWXY',
-    numericCharacters: '0123456789',
-    specialCharacters: '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~"'
-  }
-  console.log(passwordCharacterKey);
+
 
   
 
@@ -163,7 +246,12 @@ function writePassword() {
 
 
 
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
+  passwordText.value = password;
 
 
 
