@@ -1,8 +1,10 @@
 JavaScript Password Generator HW:
 -review 12/20 class video at 4 hour 28 min mark DONE
+-create pseudocode 
 -understand initial HTML, JavaScript, and CSS code 
--create pseudocode
 -code
+    -CREATE OBJECT WITH INCLUDE UPPERCASE ETC: TRUE FALSE VALUE
+    -CREATE GENERATE PASSWORD FUNCTION WITH LENGTH AND INCLUDE UPPERCASE, ETC
 -create README with screenshots or GIFs
 -15 git commits
 -deploy link through Github
@@ -13,16 +15,26 @@ Grading Criteria to Remember:
 -Add comments
 
 Psuedocode:
+0. Craete variables to store values for passwordLength, lowercaseCharacters, uppercaseCharacters, specialCharacters, and numeric characters
 1. prompt user "How many characters would you like your password to contain?" 
 2. if user chooses less than 8 characters and greater than 128 characters, then create 2 alert that user password length must be 1. greater than 7 and 2. less than or equal to 128 
-3. if user includes valid number of characters, then add another window prompt saying "Click OK to include special characters" DONE
-4. if user clicks OK to include special characters, then password generator function has to include special characters. If user clicks cancel, then password generator function will not include special characters
+3. Store value of passwordLength for generatePassword function
+3. if user includes valid number of characters, then add another window prompt saying "Click OK to include special characters" 
+4. if user clicks OK to include special characters, then password generator function has to include special characters with an if statement. If user clicks cancel, then password generator function will not include special characters
 5. add another window prompt saying "Click OK to include lowercase character
-6. if user clicks OK to include lowercase characters, then password generator function has to include lowercase characters. If user clicks cancel, then password generator function will not include lowercase characters
+6. if user clicks OK to include lowercase characters, then password generator function has to include lowercase characters with an if statement. If user clicks cancel, then password generator function will not include lowercase characters
 7. add another window prompt saying "Click OK to include uppercase character
-8. if user clicks OK to include uppercase characters, then password generator function has to include uppercase characters. If user clicks cancel, then password generator function will not include uppercase characters
+8. if user clicks OK to include uppercase characters, then password generator function has to include uppercase characters with an if statement. If user clicks cancel, then password generator function will not include uppercase characters
 9. if user clicks Cancel on all prompts (except for character length prompt), then create alert saying "Must select at least one character type"
-10. Once all prompts have been answered, display random password in text box 
+10. Once all prompts have been answered, create generate password function
+11. Create object for passwordCharacterKey
+12. Create a getPasswordCharacter array
+13. Use passwordLength from prompt to generate password length and confirm whether includeLowercase etc has been marked true. if so, include lowercase etc to password generator 
+14. Create random password  with math.floor and math.random with passwordCharacterKey.length
+15. 
+
+
+
 
 
 Acceptance Criteria:
