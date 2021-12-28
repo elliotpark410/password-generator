@@ -2,13 +2,12 @@ JavaScript Password Generator HW:
 -review 12/20 class video at 4 hour 28 min mark DONE
 -create pseudocode DONE
 -understand initial HTML, JavaScript, and CSS code DONE
--code
-    -CREAT ABILITY TO STOP RUNNING NEXT PROMPTS IF PASSWORD LENGTH PROMPT IS NULL OR BLANK
--create README with screenshots or GIFs
--15 git commits. Find out how many commits 
--review grading criteria
--deploy link through Github
--submit deployed link and github to Bootcamp Spot
+-code DONE
+-create README with screenshots DONE
+-push at least 15 git commits DONE
+-review grading criteria DONE
+-deploy link through Github DONE
+-submit deployed link and github to Bootcamp Spot DONE
 
 
 
