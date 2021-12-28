@@ -13,20 +13,23 @@ var includeLowercase;
 var includeUppercase;
 var includeNumeric;
 var includeSpecialCharacter;
+var randomPassword = "";
+var includedCharacters = "";
 
 
 // Write all code under generatePassword function because that is associated with event listener button
 function generatePassword() {
 
+
+
   // Create function prompt for password length prompt that must include an integer between 8 - 128
   function passwordLengthPrompt() {
     var passwordLengthInput = prompt("Please choose how many characters you would like your password to contain between 8-128 characters");
 
-
     if (passwordLengthInput === null || passwordLengthInput === "") {
       alert("Password generator must include how many characters you would like your password to contain")
       passwordLengthPrompt();
-      // NEED TO STOP FUNCTION SO IT RETURNS TO BEFORE FUNCTION
+      // NEED TO STOP FUNCTION SO IT RETURNS TO A STATE BEFORE FUNCTION
     } else if (passwordLengthInput > 128) {
       alert("Password must be less than 128 characters");
       passwordLengthPrompt();
@@ -44,6 +47,7 @@ function generatePassword() {
   passwordLengthPrompt();
   console.log("passwordLength: " + passwordLength);
   
+
 
   // Create confirmation for lowercase and change includeLowercase to true if user press OK and false if user press cancel
   function lowercaseConfirmation() {
@@ -66,11 +70,6 @@ function generatePassword() {
 
   
 
-
-
-
-
-
   // Create confirmation for uppercase and change includeUppercase to true if user press OK and false if user press cancel
   function uppercaseConfirmation() {
     var uppercaseConfirmationInput = confirm("Click OK to include uppercase characters");
@@ -90,7 +89,6 @@ function generatePassword() {
   uppercaseConfirmation();
   console.log("includeUppercase: " + includeUppercase);
   
-
 
 
   // Create confirmation for numeric and change includeNumeric to true if user press OK and false if user press cancel
@@ -114,7 +112,6 @@ function generatePassword() {
   
 
 
-
   // Create confirmation for specialCharacters and change includeSpecialCharacter to true if user press OK and false if user press cancel
   function specialCharactersConfirmation() {
     var specialCharactersConfirmationInput = confirm("Click OK to include special characters");
@@ -136,14 +133,7 @@ function generatePassword() {
   
 
 
-
-  
-
-
-
-
-
-  // Create alert window to notify user that user have to choose one character type to include in password
+  // Create alert window to notify user that user has to choose one character type to include in password
   function noCharactersIncluded() {
     if (includeLowercase === false &&
       includeUppercase === false &&
@@ -162,52 +152,74 @@ function generatePassword() {
  
 
 
+  // NEED TO CLEAN UP CODE BELOW AND MAKE IT MORE EFFICIENT
+  // All potential password possibilities that user confirms
+  if (includeLowercase && includeUppercase && includeNumeric) {
+    includedCharacters = lowercaseCharacters + uppercaseCharacters + numericCharacters;
+
+  } else if (includeLowercase && includeUppercase && includeSpecialCharacter) {
+    includedCharacters = lowercaseCharacters + uppercaseCharacters + specialCharacters;
+
+  } else if (includeUppercase && includeSpecialCharacter && includeNumeric) {
+    includedCharacters = uppercaseCharacters + specialCharacters + numericCharacters;
+
+  } else if (includeUppercase && includeLowercase && includeNumeric) {
+    includedCharacters = uppercaseCharacters + lowercaseCharacters + numericCharacters;
+
+  } else if (includeLowercase && includeUppercase) {
+    includedCharacters = lowercaseCharacters + uppercaseCharacters;
+  
+  } else if (includeLowercase && includeNumeric) {
+    includedCharacters = lowercaseCharacters + numericCharacters;
+
+  } else if (includeLowercase && includeSpecialCharacter) {
+    includedCharacters = lowercaseCharacters + specialCharacters;
+
+  } else if (includeUppercase && includeNumeric) {
+    includedCharacters = uppercaseCharacters + numericCharacters;
+
+  } else if (includeUppercase && includeSpecialCharacter) {
+    includedCharacters = uppercaseCharacters + specialCharacters;
+
+  } else if (includeNumeric && includeSpecialCharacter) {
+    includedCharacters = numericCharacters + specialCharacters;
+
+  } else if (includeLowercase) {
+    includedCharacters = lowercaseCharacters;
+  
+  } else if (includeUppercase) {
+    includedCharacters = uppercaseCharacters;
+  
+  } else if (includeNumeric) {
+    includedCharacters = numericCharacters;
+
+  } else if (includeSpecialCharacter) {
+    includedCharacters = specialCharacters;
+
+  } else {
+    includedCharacters = lowercaseCharacters + uppercaseCharacters + numericCharacters + specialCharacters;
+  }
+
+
+  // Generate randomPassword with for loop which and length will be passwordLength
+  for (let i = 0; i < passwordLength; i++) {
+    // randomPassworrd will add one random character incrementally until passwordLength is reached
+    // charAt method - returns the character of a string at a specified position
+    // the specified position is random because of (Math.floor(Math.random()) function 
+    // this math.random function will only choose characters in the includedCharacters variable 
+    randomPassword = randomPassword + includedCharacters.charAt(Math.floor(Math.random() * includedCharacters.length));
+  }
+  return randomPassword;
+} 
 
   
 
-    var randomPassword = "";
-    var includedCharacters = "";
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-    if (includeUppercase && includeNumeric && includeSpecialCharacter) {
-      includedCharacters += uppercaseCharacters + numericCharacters + specialCharacters;
-    
-    } else if (includeUppercase && includeSpecialCharacter) {
-      includedCharacters += uppercaseCharacters + specialCharacters;
-
-    } else if (includeUppercase && includeNumeric) {
-      includedCharacters += uppercaseCharacters + numericCharacters;
-
-    } else if (includeNumeric && includeSpecialCharacter) {
-      includedCharacters += numericCharacters + specialCharacters;
-    
-    } else if (includeUppercase) {
-      includedCharacters += uppercaseCharacters;
-    
-    } else if (includeNumeric) {
-      includedCharacters += numericCharacters;
-
-    } else if (includeSpecialCharacter) {
-      includedCharacters += specialCharacters;
-
-    } else {
-      includedCharacters === lowercaseCharacters;
-    }
-
-    // generate randompassword with for loop and char at method - returns the character at a specified position
-    for (let i = 0; i < passwordLength; i++) {
-      randomPassword += includedCharacters.charAt(Math.floor(Math.random() * includedCharacters.length));
-    }
-    return randomPassword;
-  } 
-    
-
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
