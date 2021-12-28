@@ -69,29 +69,45 @@ Here is a link to the Github repository
 
 ## Code Snippets
 
- Include screenshot or GIF of code. Add comment including what it does and why it is significant
+This code snippet shows how I generated a random password
+* The for loop will add one random character incrementally until the password length is reached and it will only include character types that have been selected by the user
+
+* The charAt method returns the character of a string at a specified position and the specified position is a random character because of (Math.floor(Math.random()) function 
+
+```
+for (let i = 0; i < passwordLength; i++) {
+    randomPassword = randomPassword + includedCharacters.charAt(Math.floor(Math.random() * includedCharacters.length));
+  }
+  return randomPassword;
+```
 
  <br>
 
 ## Deployed Link
 
-* [See Live Site](#)
+* [https://elliotpark410.github.io/password-generator/](#)
 
 <br>
 
 ## Learning Points
 
-Explain what you learned by creating this application
+* How to use charAt() method, Math.floor function, Math.random function, for loop, return statement, if/else statements, and how to declare variables
+<br>
+
+* The importance of scoping variables correctly and the importance of creating placeholder variables in the beginning
+<br>
+
+* For the most part, the computer will read code from top to bottom and left to right in a logical manner 
 
 <br>
 
 ## Authors
 
-* **YOUR NAME** 
+* **Elliot Park** 
 
-- [Link to Portfolio Site](#)
-- [Link to Github](https://github.com/)
-- [Link to LinkedIn](https://www.linkedin.com/)
+- [Link to Password Generator application](https://elliotpark410.github.io/password-generator/)
+- [Link to Github](https://github.com/elliotpark410)
+- [Link to LinkedIn](https://www.linkedin.com/in/elliot-park/)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -99,12 +115,10 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License 
+This project is licensed under the UC Berkeley Extension Program 
 
 <br>
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code, libraries, packages, or UI was used  / inspired from
-* Inspiration
-* etc
+* Thank you to Jerome Chenette, Manuel Nunes, and Daniel Chicchon for their help!
