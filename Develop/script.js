@@ -1,13 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Create variables for potential characters and placeholders for password length and whether to include characters in the password
+// Create variables for password character key 
 var lowercaseCharacters = 'abcdefghijklmnopqrstuvwxyz';
 var uppercaseCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXY';
 var numericCharacters = '0123456789';
 var specialCharacters = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~"';
 
-
+// Create placeholders for password length and character types to incude in the password
 var passwordLength;
 var includeLowercase;
 var includeUppercase;
