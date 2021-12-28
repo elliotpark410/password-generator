@@ -22,7 +22,7 @@ Open your favorite web browser and enter the following web address to access.
 
 <br>
 
-### Prerequisites
+## Prerequisites
 
 1. Any of these internet browser will do 
 <br>
@@ -35,20 +35,29 @@ Open your favorite web browser and enter the following web address to access.
 
 <br>
 
-### Installing
+## Installing
 
 To install this code, use Github's guidlines to clone the repository
 <br>
+
 Here is a link to the Github repository
 >https://github.com/elliotpark410/password-generator
 
-End with an example of getting some data out of the system or using it for a little demo.
+<br>
+
+## Screenshots 
+
+<img src="Assets\password-generator screenshot1.png" title="Password Length Prompt screenshot" width = 800px>
 
 <br>
 
-## Screenshots or GIFs
+<img src="Assets\password-generator screenshot2.png" title="Lowercase Confirmation screenshot" width = 800px>
 
-Include screenshot or GIFs of deployed link 
+<br>
+
+<img src="Assets\password-generator screenshot3.png" title="Display of Random Password screenshot" width = 800px>
+
+<br>
 
 ## Built With
 
