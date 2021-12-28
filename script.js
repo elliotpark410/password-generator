@@ -154,7 +154,10 @@ function generatePassword() {
 
   // NEED TO CLEAN UP CODE BELOW AND MAKE IT MORE EFFICIENT
   // All potential password possibilities that user confirms
-  if (includeLowercase && includeUppercase && includeNumeric) {
+  if  (includeLowercase && includeUppercase && includeNumeric && includeSpecialCharacter) {
+    includedCharacters = lowercaseCharacters + uppercaseCharacters + numericCharacters + specialCharacters;
+    
+  } else if (includeLowercase && includeUppercase && includeNumeric) {
     includedCharacters = lowercaseCharacters + uppercaseCharacters + numericCharacters;
 
   } else if (includeLowercase && includeUppercase && includeSpecialCharacter) {
@@ -193,12 +196,10 @@ function generatePassword() {
   } else if (includeNumeric) {
     includedCharacters = numericCharacters;
 
-  } else if (includeSpecialCharacter) {
-    includedCharacters = specialCharacters;
-
   } else {
-    includedCharacters = lowercaseCharacters + uppercaseCharacters + numericCharacters + specialCharacters;
+    includedCharacters = specialCharacters;
   }
+   
 
 
   // Generate randomPassword with for loop which and length will be passwordLength
